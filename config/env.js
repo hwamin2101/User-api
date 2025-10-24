@@ -1,4 +1,4 @@
-import 'dotenv/config'; // Sử dụng import cho dotenv trong ESM
+import 'dotenv/config';
 
 const getEnv = (key, defaultValue = null) => process.env[key] || defaultValue;
 

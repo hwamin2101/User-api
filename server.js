@@ -3,9 +3,7 @@ import userRoutes from './routes/userRoutes.js';
 import { connectDB } from './config/db.js';
 
 const app = express();
-app.use(json()); // Phải trước app.use('/api/users', userRoutes)
-
-// Log middleware để kiểm tra body
+app.use(json()); 
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url} - Body:`, req.body);
   next();

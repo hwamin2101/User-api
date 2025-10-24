@@ -1,13 +1,13 @@
 # User-api
 ### sign up
-![alt text](image.png)
+![alt text](apitest/image.png)
 ### sign in
-![alt text](image-1.png)
+![alt text](apitest/image-1.png)
 ### get all user
-![alt text](image-2.png)
+![alt text](apitest/image-2.png)
 ### get user with id
-![alt text](image-3.png)
+![alt text](apitest/image-3.png)
 ### update user with id
-![alt text](image-4.png)
+![alt text](apitest/image-4.png)
 ### delete user
-![alt text](image-5.png)
+![alt text](apitest/image-5.png)

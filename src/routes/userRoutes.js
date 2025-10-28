@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// GET /api/users (lấy tất cả user)
+// GET /api/users (get all user)
 router.get('/', authenticateToken, async (req, res) => {
   try {
     const result = await getAllUsers();
@@ -35,7 +35,7 @@ router.get('/', authenticateToken, async (req, res) => {
   }
 });
 
-// GET /api/users/:id (lấy user theo ID)
+// GET /api/users/:id (get user by id)
 router.get('/:id', authenticateToken, async (req, res) => {
   try {
     const result = await getUserById(req.params.id);
@@ -45,7 +45,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// PUT /api/users/:id (cập nhật user)
+// PUT /api/users/:id (update user)
 router.put('/:id', authenticateToken, async (req, res) => {
   try {
     const result = await updateUser(req.params.id, req.body);
@@ -55,7 +55,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// DELETE /api/users/:id (xóa user)
+// DELETE /api/users/:id ( delete user)
 router.delete('/:id', authenticateToken, async (req, res) => {
   try {
     const result = await deleteUser(req.params.id);

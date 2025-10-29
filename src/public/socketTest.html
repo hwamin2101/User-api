@@ -54,7 +54,6 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    // === RESET & NHẬP TOKEN MỚI ===
     function resetTest() {
       localStorage.removeItem('token');
       setStatus('Đã xóa token cũ. Nhập token mới từ Postman.', 'success');
@@ -70,7 +69,6 @@
       }, 500);
     }
 
-    // === LẤY TOKEN TỪ localStorage (TỪ POSTMAN) ===
     const token = localStorage.getItem('token');
     if (!token) {
       setStatus('Chưa có token. Click "Reset & Nhập Token Mới" để dán token từ Postman.', 'error');
@@ -79,7 +77,6 @@
       initSocket(token);
     }
 
-    // === KHỞI TẠO SOCKET ===
     function initSocket(token) {
       const socket = io({
         auth: { token },
@@ -90,7 +87,6 @@
         add('Connected', { id: socket.id });
         setStatus('Kết nối thành công!', 'success');
 
-        // LẤY THÔNG TIN USER TỪ /me
         fetch('/api/users/me', {
           headers: { 'Authorization': `Bearer ${token}` }
         })
@@ -113,7 +109,6 @@
         setStatus(`Lỗi: ${err.message} (Token sai hoặc hết hạn?)`, 'error');
       });
 
-      // CÁC EVENT
       socket.on('room:joined', d => add('room:joined', d));
       socket.on('room:members', d => add('room:members', d));
       socket.on('room:message', d => add('room:message', d));
@@ -122,7 +117,6 @@
       socket.on('notification:receive', d => add('notification:receive', d));
       socket.on('state:typing', d => add('state:typing', d));
 
-      // GỌI HÀM
       window.joinRoom = () => socket.emit('room:join', { roomId: 'chat-123' });
       window.leaveRoom = () => socket.emit('room:leave', { roomId: 'chat-123' });
       window.sendMessage = () => {

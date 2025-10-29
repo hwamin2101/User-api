@@ -5,17 +5,17 @@ import env from '../config/env.js';
 
 const { JWT_SECRET } = env;
 
-// Lấy toàn bộ user
+// get all user
 const getAllUsers = async () => {
   try {
-    const users = await User.find().select('-password'); // không trả password
+    const users = await User.find().select('-password');
     return { success: true, data: users };
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
-// Lấy user theo id
+// get user by id
 const getUserById = async (id) => {
   try {
     const user = await User.findById(id).select('-password');
@@ -26,7 +26,7 @@ const getUserById = async (id) => {
   }
 };
 
-// Đăng ký user mới
+// sign up new user
 const createUser = async (name, email, password, dateOfBirth) => {
   try {
     if (!name || !email || !password || !dateOfBirth)
@@ -50,7 +50,7 @@ const createUser = async (name, email, password, dateOfBirth) => {
   }
 };
 
-// Cập nhật user
+// Update user information
 const updateUser = async (id, updates) => {
   try {
     if (updates.password)
@@ -68,7 +68,7 @@ const updateUser = async (id, updates) => {
   }
 };
 
-// Xoá user
+// Delete user
 const deleteUser = async (id) => {
   try {
     const user = await User.findByIdAndDelete(id);
@@ -79,7 +79,7 @@ const deleteUser = async (id) => {
   }
 };
 
-// Đăng nhập user
+// Sign in
 const loginUser = async (email, password) => {
   try {
     if (!email || !password)
